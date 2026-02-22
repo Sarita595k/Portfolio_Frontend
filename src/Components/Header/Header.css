@@ -1,0 +1,170 @@
+#mainContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#cloud1 {
+    height: 22vh;
+    width: 100%;
+    position: absolute;
+    top: 5vh;
+    z-index: 200;
+}
+
+#cloud2 {
+    height: 22vh;
+    width: 100%;
+    position: absolute;
+    top: 25vh;
+    z-index: 20;
+}
+
+
+.solar-system {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+}
+
+
+.solar-system svg {
+    width: 100%;
+    height: 100%;
+}
+
+.orbit {
+    transform-origin: 500px 500px;
+    animation: spin linear infinite;
+}
+
+
+.orbit-path {
+    fill: none;
+    stroke: rgb(159, 155, 155);
+    stroke-width: 1;
+    opacity: .5;
+}
+
+.planet1 {
+    fill: #ffcc00;
+}
+
+.planet2 {
+    fill: #1ca9c2;
+}
+
+.planet3 {
+    fill: #119f04;
+}
+
+/* Different speeds */
+.orbit1 {
+    animation-duration: 20s;
+}
+
+.orbit2 {
+    animation-duration: 14s;
+}
+
+.orbit3 {
+    animation-duration: 10s;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.container {
+    width: 50%;
+    top: 30%;
+    left: 5%;
+    /* position: absolute; */
+}
+
+
+#top-hello-section p {
+    font-family: var(--font-family);
+    color: white;
+    font-size: 2.7rem;
+    /* margin-left: 3rem; */
+}
+
+#top-hello-section p span i {
+    color: rgb(81, 16, 16);
+}
+
+#greetings-container {
+    font-size: 12.5rem;
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 2rem 0;
+    color: #ffffff;
+    text-shadow: .2rem .1rem 1rem #b3e2ea;
+}
+
+.top-name {
+    width: 50%;
+    margin-left: 3rem;
+    font-size: 4.1rem;
+    color: #ffffff;
+    font-family: var(--sub-font-family);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.plane {
+    position: absolute;
+    width: 100%;
+    height: 50vh;
+    top: 35%;
+    left: 25%;
+    z-index: 200;
+    opacity: .4;
+    background-repeat: no-repeat;
+    /* background: url("../images//Header/Plane-With-Line.png") no-repeat; */
+}
+
+.imageContainer {
+    /* height: 100vh; */
+    width: clamp(100%, 45vw, 40%);
+    z-index: 205;
+}
+
+.girlImage {
+    margin-left: clamp(15%, 15vw, 45%);
+    height: clamp(100%, 45vw, 75%);
+    width: clamp(70%, 45vw, 70%);
+}
+
+@media(max-width: 660px) {
+    #mainContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .solar-system {
+        top: 20%;
+        left: 0%;
+    }
+
+    .plane {
+        display: none;
+    }
+}
