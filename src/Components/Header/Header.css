@@ -146,7 +146,7 @@
 
 .girlImage {
     margin-left: clamp(15%, 15vw, 45%);
-    height: clamp(100%, 45vw, 75%);
+    /* height: clamp(100%, 45vw, 75%); */
     width: clamp(70%, 45vw, 70%);
 }
 
@@ -158,8 +158,16 @@
     }
 
     .solar-system {
-        top: 0%;
+        top: 15%;
         left: auto;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .imageContainer {
+        top: 0%;
+        position: relative;
+        z-index: 11;
     }
 
     .plane {
