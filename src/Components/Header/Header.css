@@ -98,7 +98,6 @@
 
 
 #top-hello-section p {
-    text-align: center;
     font-family: var(--font-family);
     color: white;
     font-size: 2.7rem;
@@ -120,9 +119,9 @@
 }
 
 .top-name {
-    width: 100%;
-    margin-top: 3rem;
-    font-size: 1.1rem;
+    width: 50%;
+    margin-left: 3rem;
+    font-size: 4.1rem;
     color: #ffffff;
     font-family: var(--sub-font-family);
     text-transform: uppercase;
@@ -142,13 +141,15 @@
 
 .imageContainer {
     width: 100%;
+    height: 100%;
     z-index: 205;
 }
 
 .girlImage {
-    margin-left: clamp(15%, 15vw, 45%);
-    height: 100%;
-    width: 70%;
+    margin-left: 40%;
+    margin-top: 18%;
+    width: 60%;
+    height: 75%;
 }
 
 @media(max-width: 660px) {
@@ -159,24 +160,38 @@
     }
 
     .solar-system {
-        top: 20%;
+        top: 10%;
         left: auto;
         position: absolute;
         z-index: 1;
     }
 
-    .imageContainer {
-        position: relative;
-        z-index: 11;
-    }
-
     .girlImage {
-        height: 100%;
-        width: 85%;
-        background-size: cover;
+        margin-top: 25%;
+        margin-left: 0;
+        transform: translateX(-50%, -50%);
+        width: 100%;
+        height: 80%;
     }
 
     .plane {
         display: none;
+    }
+
+    .container {
+        width: 100%;
+        height: 40%;
+        text-align: center;
+    }
+
+    #top-hello-section p {
+        font-size: 1.7rem;
+    }
+
+    .top-name {
+        margin-top: 10%;
+        width: 100%;
+        font-size: 1.6rem;
+        margin-left: 0;
     }
 }
