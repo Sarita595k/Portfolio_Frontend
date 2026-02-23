@@ -120,9 +120,9 @@
 }
 
 .top-name {
-    width: 50%;
-    margin-left: 3rem;
-    font-size: 4.1rem;
+    width: 100%;
+    margin-top: 3rem;
+    font-size: 1.1rem;
     color: #ffffff;
     font-family: var(--sub-font-family);
     text-transform: uppercase;
@@ -166,14 +166,13 @@
     }
 
     .imageContainer {
-        top: 0%;
         position: relative;
         z-index: 11;
     }
 
     .girlImage {
         height: 100%;
-        width: 75%;
+        width: 85%;
         background-size: cover;
     }
 

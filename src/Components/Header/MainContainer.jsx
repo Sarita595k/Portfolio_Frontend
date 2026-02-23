@@ -11,11 +11,11 @@ const MainContainer = () => {
                     <section id="top-hello-section">
                         <p>Welcome to my portfolio<span><i className="fa-solid fa-heart"></i></span></p>
                     </section>
-                    {/* <div className="top-name">
+                    <div className="top-name">
                         <span>made with love</span>
-                        <span>by</span>
+                        <span> by</span>
                         <p>sarita</p>
-                    </div> */}
+                    </div>
                 </div>
                 <div className="plane" style={{ backgroundImage: `url(${planeImg})` }}></div>
                 <div className="imageContainer">
