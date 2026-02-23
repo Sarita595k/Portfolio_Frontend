@@ -147,7 +147,7 @@
 
 .girlImage {
     margin-left: clamp(15%, 15vw, 45%);
-    /* height: clamp(100%, 45vw, 75%); */
+    height: 100%;
     width: 70%;
 }
 
@@ -172,6 +172,8 @@
     }
 
     .girlImage {
+        height: 100%;
+        width: 75%;
         background-size: cover;
     }
 
