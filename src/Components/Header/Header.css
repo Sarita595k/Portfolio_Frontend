@@ -156,7 +156,7 @@
     #mainContainer {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
     }
 
     .solar-system {
@@ -180,18 +180,18 @@
 
     .container {
         width: 100%;
-        height: 40%;
+        height: 50%;
         text-align: center;
     }
 
     #top-hello-section p {
-        font-size: 1.7rem;
+        font-size: 3.7rem;
     }
 
     .top-name {
         margin-top: 10%;
         width: 100%;
-        font-size: 1.6rem;
+        font-size: 2.6rem;
         margin-left: 0;
     }
 }
