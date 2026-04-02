@@ -12,4 +12,74 @@ html {
 :root {
     --font-family: "Kaushan Script", cursive;
     --sub-font-family: "Protest Revolution", sans-serif;
+    --bg-gradient: linear-gradient(to bottom, #ebecec, #80aaaf);
+    --bg-dots: rgba(52, 96, 100, 0.1);
+
+    --card-bg: rgba(255, 255, 255, 0.45);
+    --card-border: rgba(255, 255, 255, 0.8);
+    --card-shadow: rgba(31, 38, 135, 0.05);
+
+    --text-main: #1a3636;
+    --text-muted: #4a5568;
+    --text-sub: #718096;
+
+    --highlight: #2980b9;
+    --icon-bg: rgba(255, 255, 255, 0.6);
+    --express-logo: #000000;
+    --proj-bg: #f8fafc;
+    /* Very light slate gray */
+    --proj-card-bg: #ffffff;
+    --proj-border: #e2e8f0;
+    --proj-shadow: rgba(15, 23, 42, 0.08);
+
+    --proj-text-main: #0f172a;
+    --proj-text-muted: #64748b;
+
+    --mockup-bg: #f1f5f9;
+    --mockup-border: #cbd5e1;
+    --mockup-screen: #ffffff;
+    --bg-about: linear-gradient(to bottom, #ebecec, #80aaaf);
+    --bg-projects: #f8fafc;
+    --text-main: #1a3636;
+    --card-bg: rgba(255, 255, 255, 0.45);
+    --card-border: rgba(255, 255, 255, 0.8);
+}
+
+/* Override: Dark Theme */
+[data-theme="dark"] {
+    --bg-gradient: linear-gradient(to bottom, #346064, #1f3a3d);
+    --bg-dots: rgba(179, 226, 234, 0.05);
+
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.2);
+
+    --text-main: #ffffff;
+    --text-muted: #e2e8f0;
+    --text-sub: #cbd5e1;
+
+    --highlight: #b3e2ea;
+    --icon-bg: rgba(255, 255, 255, 0.05);
+    --express-logo: #ffffff;
+    --proj-bg: #0f172a;
+    /* Deep Navy Blue */
+    --proj-card-bg: #1e293b;
+    --proj-border: #334155;
+    --proj-shadow: rgba(0, 0, 0, 0.3);
+
+    --proj-text-main: #f8fafc;
+    --proj-text-muted: #94a3b8;
+
+    --mockup-bg: #0f172a;
+    --mockup-border: #475569;
+    --mockup-screen: #1e293b;
+    --bg-about: linear-gradient(to bottom, #346064, #1f3a3d);
+    --bg-projects: #0f172a;
+    --text-main: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    /* background: #266067; */
 }

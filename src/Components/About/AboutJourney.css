@@ -1,0 +1,213 @@
+/* --- Section Container --- */
+#journey-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    /* Light background to match your image */
+    padding: 5rem 2rem;
+    font-family: sans-serif;
+    color: #333;
+}
+
+.journey-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.section-title i {
+    color: #3498db;
+    margin-right: 10px;
+}
+
+.section-title .highlight-text {
+    color: #3498db;
+}
+
+/* Ensure React Icons align nicely with text */
+.title-icon svg {
+    color: #3498db;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.timeline-icon-box svg {
+    font-size: 1.5rem;
+    /* Controls the size of the React Icons in the boxes */
+}
+
+/* --- Timeline Layout --- */
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* The Central Vertical Line */
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: #cbd5e1;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* The Moving Airplane */
+.timeline-plane {
+    position: absolute;
+    left: 50%;
+    /* Rotate 180deg to point the plane downwards */
+    transform: translate(-50%, -50%) rotate(180deg);
+    font-size: 2rem;
+    color: #3498db;
+    z-index: 5;
+    /* Smooth transition for the scroll movement */
+    transition: top 0.1s ease-out;
+}
+
+/* --- Timeline Items --- */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1rem 3rem;
+    box-sizing: border-box;
+    margin-bottom: 3rem;
+    z-index: 2;
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item.right {
+    left: 50%;
+    text-align: left;
+}
+
+/* Center Dots */
+.timeline-dot {
+    position: absolute;
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    z-index: 2;
+}
+
+.timeline-item.left .timeline-dot {
+    right: -8px;
+    /* Aligns dot on the center line for left items */
+}
+
+.timeline-item.right .timeline-dot {
+    left: -8px;
+    /* Aligns dot on the center line for right items */
+}
+
+/* --- Content Styling --- */
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.timeline-item.left .timeline-content {
+    align-items: flex-end;
+}
+
+.timeline-item.right .timeline-content {
+    align-items: flex-start;
+}
+
+.timeline-icon-box {
+    width: 50px;
+    height: 50px;
+    background-color: #e67e22;
+    /* Orange accent from the image */
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+.designation {
+    font-size: 1.4rem;
+    color: #2980b9;
+    margin: 0;
+    font-weight: 700;
+}
+
+.company-name {
+    font-size: 1.1rem;
+    color: #e67e22;
+    margin: 0;
+    font-weight: 600;
+}
+
+.date-badge {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin: 0.5rem 0;
+    display: inline-block;
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+    max-width: 400px;
+}
+
+/* --- Responsive Design (Mobile) --- */
+@media screen and (max-width: 768px) {
+    .timeline-line {
+        left: 30px;
+        /* Move line to the left side */
+    }
+
+    .timeline-plane {
+        left: 30px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        /* Add space for the line on the left */
+        padding-right: 1rem;
+        text-align: left;
+    }
+
+    .timeline-item.left {
+        left: 0;
+    }
+
+    .timeline-item.right {
+        left: 0;
+    }
+
+    .timeline-item.left .timeline-content,
+    .timeline-item.right .timeline-content {
+        align-items: flex-start;
+    }
+
+    .timeline-item.left .timeline-dot,
+    .timeline-item.right .timeline-dot {
+        left: 22px;
+        right: auto;
+    }
+}

@@ -1,0 +1,26 @@
+.global-theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    /* Highest possible z-index */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #2980b9;
+    background: var(--card-bg);
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.global-theme-toggle:hover {
+    transform: scale(1.1);
+    background: #2980b9;
+    color: white;
+}
