@@ -15,6 +15,7 @@
 
 .projects-container {
     max-width: 1200px;
+    padding-top: 12rem;
     width: 100%;
     opacity: 0;
     transform: translateY(3rem);

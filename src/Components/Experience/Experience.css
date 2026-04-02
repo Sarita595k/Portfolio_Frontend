@@ -1,0 +1,126 @@
+/* Ensure these match your index.css variables */
+#experience-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: var(--bg-about);
+    padding: 12rem 2rem 10rem;
+    margin-top: -5.5rem;
+    /* Sufficient overlap for the Projects section diagonal */
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box;
+}
+
+.exp-container {
+    max-width: 1100px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(4rem);
+    transition: 1s ease-out;
+}
+
+.exp-container.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.exp-header {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.exp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    gap: 5rem;
+}
+
+.column-title {
+    font-size: 2.2rem;
+    color: #346064;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    font-family: var(--sub-font-family);
+}
+
+.timeline {
+    border-left: 3px solid #346064;
+    padding-left: 3rem;
+    position: relative;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 4rem;
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--card-border);
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px var(--card-shadow);
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    border-color: #346064;
+    box-shadow: 0 8px 25px var(--card-shadow);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -4.15rem;
+    top: 2.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: #346064;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    /* Contrasts against the spine */
+    z-index: 2;
+}
+
+.time-mark {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: #346064;
+    color: #fff;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-item h4 {
+    font-size: 1.9rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    font-weight: bold;
+    color: #346064;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.details {
+    font-size: 1.45rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    #experience-section {
+        padding-top: 18rem;
+        margin-top: -12rem;
+    }
+
+    .exp-grid {
+        gap: 4rem;
+    }
+}

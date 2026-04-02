@@ -8,6 +8,8 @@ import Projects from '../Components/Projects/Projects'
 import "./LandingPage.css"
 import { useState } from 'react'
 import { FaMoon, FaSun } from 'react-icons/fa'
+import Experience from '../Components/Experience/Experience'
+import Skills from '../Components/Skills/Skills'
 const LandingPage = () => {
     const [theme, setTheme] = useState("light");
 
@@ -25,6 +27,8 @@ const LandingPage = () => {
             <SubContainer />
             <SolarSystem />
             <About />
+            <Skills />
+            <Experience />
             {/* <AboutJourney /> */}
             <Projects />
             <ContactForm />

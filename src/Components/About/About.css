@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 8rem;
+    padding-top: 12rem;
     padding-left: 2rem;
     padding-right: 2rem;
     padding-bottom: 8rem;
@@ -21,7 +21,7 @@
     /* Your requested diagonal clip-path */
     clip-path: polygon(100% 0, 100% 100%, 0 91%, 0 0);
     background: var(--bg-about);
-    z-index: 10;
+    z-index: 20;
 }
 
 /* Theme Toggle Button Style */
