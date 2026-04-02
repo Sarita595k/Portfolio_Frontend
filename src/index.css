@@ -10,6 +10,17 @@ html {
 }
 
 :root {
+    --bg-main: #020617;
+    /* Deep Navy/Black */
+    --bg-card: #111827;
+    /* Dark Gray Card */
+    --accent-teal: #0d9488;
+    /* Primary Teal */
+    --accent-blue: #3b82f6;
+    /* Highlight Blue */
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #1f2937;
     --font-family: "Kaushan Script", cursive;
     --sub-font-family: "Protest Revolution", sans-serif;
     --bg-gradient: linear-gradient(to bottom, #ebecec, #80aaaf);
@@ -81,5 +92,7 @@ html {
 }
 
 body {
-    /* background: #266067; */
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
 }
