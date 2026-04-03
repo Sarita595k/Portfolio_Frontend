@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Skills.css";
 import {
     FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaGitAlt, FaDatabase
 } from "react-icons/fa";
@@ -32,7 +31,7 @@ const Skills = () => {
             title: "Backend & DB",
             skills: [
                 { name: "Node.js", icon: <FaNodeJs />, color: "#68A063" },
-                { name: "Express.js", icon: <SiExpress />, color: "var(--express-logo)" },
+                { name: "Express.js", icon: <SiExpress />, color: "#ffffff" },
                 { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
                 { name: "Firebase", icon: <SiFirebase />, color: "#FFCA28" }
             ]
@@ -43,30 +42,51 @@ const Skills = () => {
                 { name: "Java (DSA)", icon: <FaJava />, color: "#f89820" },
                 { name: "Git/GitHub", icon: <FaGitAlt />, color: "#F05032" },
                 { name: "Postman", icon: <SiPostman />, color: "#FF6C37" },
-                { name: "REST APIs", icon: <FaDatabase />, color: "#346064" }
+                { name: "REST APIs", icon: <FaDatabase />, color: "#346065" }
             ]
         }
     ];
 
     return (
-        <section id="skills-section" ref={sectionRef}>
-            <div className={`skills-container ${isVisible ? "animate-in" : ""}`}>
-                <div className="skills-header">
-                    <h2 className="section-title">Technical <span className="highlight-text">Toolkit</span></h2>
-                    <p className="section-subtitle">The technologies I use to bring ideas to life.</p>
+        <section
+            id="skills-section"
+            ref={sectionRef}
+            className="relative w-full min-h-screen bg-black flex justify-center py-16 px-6 overflow-hidden z-10"
+            style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 91%)" }}
+        >
+            <div className={`max-w-7xl w-full transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+
+                {/* Header */}
+                <div className="text-center mb-20">
+                    <h2 className="text-5xl md:text-6xl font-protest text-white mb-4">
+                        Technical <span className="text-brand">Toolkit</span>
+                    </h2>
+                    <p className="text-slate-400 text-lg md:text-xl font-medium">The technologies I use to bring ideas to life.</p>
                 </div>
 
-                <div className="skills-grid">
+                {/* Skills Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {skillCategories.map((cat, index) => (
-                        <div className="skill-category-card" key={index}>
-                            <h3>{cat.title}</h3>
-                            <div className="skills-list">
+                        <div
+                            key={index}
+                            className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[32px] shadow-2xl hover:border-brand/50 transition-all duration-500 group"
+                        >
+                            <h3 className="text-brand text-2xl font-bold mb-8 text-center border-b border-white/10 pb-4 uppercase tracking-widest group-hover:text-white transition-colors">
+                                {cat.title}
+                            </h3>
+
+                            <div className="grid grid-cols-2 gap-y-10 gap-x-4">
                                 {cat.skills.map((skill, i) => (
-                                    <div className="skill-item" key={i}>
-                                        <div className="skill-icon" style={{ color: skill.color }}>
+                                    <div key={i} className="flex flex-col items-center gap-4 group/item cursor-default">
+                                        <div
+                                            className="text-5xl transition-transform duration-300 group-hover/item:scale-125 drop-shadow-md"
+                                            style={{ color: skill.color }}
+                                        >
                                             {skill.icon}
                                         </div>
-                                        <span>{skill.name}</span>
+                                        <span className="text-slate-300 text-sm font-semibold tracking-wide whitespace-nowrap group-hover/item:text-brand transition-colors">
+                                            {skill.name}
+                                        </span>
                                     </div>
                                 ))}
                             </div>

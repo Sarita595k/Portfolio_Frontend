@@ -26,7 +26,7 @@ const About = () => {
             id="about-section"
             ref={sectionRef}
             // Removed clip-path from style to prevent text cutting, used a bottom slant instead
-            className="relative w-full min-h-screen flex justify-center items-start pt-48 pb-32 px-6 md:px-12 overflow-hidden bg-black z-20"
+            className="relative w-full min-h-screen flex justify-center items-start pt-16 pb-32 px-6 md:px-12 overflow-hidden bg-black z-20"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 92%, 0 100%)" }}
         >
             {/* Animated Background Dots */}
