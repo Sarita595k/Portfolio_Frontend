@@ -1,24 +1,47 @@
 @import "tailwindcss";
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
+@layer base {
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        /* Moving overflow-x here prevents layout bugs */
+        overflow-x: hidden;
+        background-color: black;
+        color: white;
+    }
 }
 
 @theme {
     --color-brand: #346065;
     --font-protest: "Protest Revolution", sans-serif;
     --font-kaushan: "Kaushan Script", cursive;
-}
 
-@keyframes moveBg {
-    0% {
-        transform: translate(0, 0);
+    /* This tells Tailwind to create the .animate-moveBg class */
+    --keyframes-move-bg: {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        100% {
+            transform: translate(-40px, -40px);
+        }
     }
 
+    ;
+    --animation-move-bg: move-bg 30s linear infinite;
+}
+
+@keyframes spin {
     100% {
-        transform: translate(-40px, -40px);
+        transform: rotate(360deg);
     }
 }
