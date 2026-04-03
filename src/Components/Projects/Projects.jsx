@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Projects.css";
 import { FaGithub, FaExternalLinkAlt, FaTimes, FaLaptopCode, FaMobileAlt, FaTabletAlt } from "react-icons/fa";
 
 const Projects = () => {
     const [isVisible, setIsVisible] = useState(false);
-    const [activeProject, setActiveProject] = useState(null); // Controls the Modal
+    const [activeProject, setActiveProject] = useState(null);
     const sectionRef = useRef(null);
 
     // Scroll animation trigger
@@ -24,14 +23,9 @@ const Projects = () => {
 
     // Prevent body scrolling when modal is open
     useEffect(() => {
-        if (activeProject) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
+        document.body.style.overflow = activeProject ? "hidden" : "auto";
     }, [activeProject]);
 
-    // Enhanced Project Data
     const projectList = [
         {
             id: 1,
@@ -47,7 +41,7 @@ const Projects = () => {
             tech: ["Node.js", "Express", "EJS", "MongoDB"],
             github: "#",
             live: "#",
-            color: "#3b82f6" // Blue accent
+            color: "#3b82f6"
         },
         {
             id: 2,
@@ -55,7 +49,7 @@ const Projects = () => {
             category: "Frontend Architecture",
             shortDesc: "A highly responsive, client-facing website designed for an organic nutritionist business.",
             fullDetails: [
-                "Designed a pixel-perfect, mobile-first interface prioritizing user experience and accessibility.",
+                "Designed a pixel-perfect, mobile-first interface prioritizing UX and accessibility.",
                 "Utilized modern React Hooks (useState, useEffect) for dynamic state management.",
                 "Implemented React Router for seamless single-page application (SPA) navigation.",
                 "Optimized asset loading for fast performance and high Lighthouse scores."
@@ -63,7 +57,7 @@ const Projects = () => {
             tech: ["React", "CSS3", "React Router"],
             github: "#",
             live: "#",
-            color: "#10b981" // Green accent
+            color: "#10b981"
         },
         {
             id: 3,
@@ -71,54 +65,65 @@ const Projects = () => {
             category: "AI Integration",
             shortDesc: "An experimental platform integrating modern AI APIs directly into a React frontend.",
             fullDetails: [
-                "Successfully integrated third-party AI APIs (like Gemini/OpenAI) via a secure Express backend.",
-                "Engineered dynamic prompt-handling for smart code analysis and snippet generation.",
+                "Successfully integrated third-party AI APIs (like Gemini/OpenAI) via Express.",
+                "Engineered dynamic prompt-handling for smart code analysis.",
                 "Built an interactive chat interface mimicking real-time streaming responses.",
                 "Stored conversation histories in MongoDB for user session continuity."
             ],
             tech: ["MERN Stack", "AI APIs", "Context API"],
             github: "#",
             live: "#",
-            color: "#8b5cf6" // Purple accent
+            color: "#8b5cf6"
         }
     ];
 
     return (
-        <section id="projects-section" ref={sectionRef}>
-            <div className={`projects-container ${isVisible ? "animate-in" : ""}`}>
+        <section id="projects-section" ref={sectionRef} className="relative w-full min-h-screen bg-black py-32 px-6 overflow-hidden z-20">
+            <div className={`max-w-7xl mx-auto transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
 
-                <div className="projects-header">
-                    <h2 className="section-title">
-                        Featured <span className="highlight-text">Projects</span>
+                {/* Header */}
+                <div className="text-center mb-20">
+                    <h2 className="text-5xl md:text-6xl font-protest text-white mb-4">
+                        Featured <span className="text-brand">Projects</span>
                     </h2>
-                    <p className="section-subtitle">Showcasing responsive design across all devices.</p>
+                    <p className="text-slate-400 text-lg md:text-xl font-medium">Showcasing responsive design across all devices.</p>
                 </div>
 
-                <div className="projects-grid">
+                {/* Projects Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projectList.map((project) => (
-                        <div className="project-card" key={project.id} style={{ '--theme-accent': project.color }}>
-
-                            {/* The CSS Device Mockups Graphic */}
-                            <div className="device-mockup-wrapper">
-                                <div className="mockup desktop">
-                                    <div className="screen"><FaLaptopCode /></div>
-                                    <div className="base"></div>
+                        <div
+                            key={project.id}
+                            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[32px] overflow-hidden flex flex-col hover:border-brand/50 transition-all duration-500 group shadow-2xl"
+                        >
+                            {/* Device Mockup Wrapper */}
+                            <div className="h-64 bg-brand/5 relative flex justify-center items-end pb-8 border-b border-white/5 overflow-hidden">
+                                {/* Desktop */}
+                                <div className="w-48 h-32 bg-[#1a1a1a] border-2 border-slate-700 rounded-t-lg z-10 flex items-center justify-center text-brand text-3xl group-hover:scale-110 transition-transform duration-500">
+                                    <FaLaptopCode />
                                 </div>
-                                <div className="mockup tablet">
-                                    <div className="screen"><FaTabletAlt /></div>
+                                {/* Tablet */}
+                                <div className="absolute left-10 bottom-10 w-20 h-28 bg-[#222] border-2 border-slate-700 rounded-lg z-20 flex items-center justify-center text-brand text-2xl shadow-xl group-hover:-translate-x-2 transition-transform duration-500">
+                                    <FaTabletAlt />
                                 </div>
-                                <div className="mockup mobile">
-                                    <div className="screen"><FaMobileAlt /></div>
+                                {/* Mobile */}
+                                <div className="absolute right-12 bottom-8 w-12 h-24 bg-[#2a2a2a] border-2 border-slate-700 rounded-xl z-30 flex items-center justify-center text-brand text-xl shadow-2xl group-hover:translate-x-2 transition-transform duration-500">
+                                    <FaMobileAlt />
                                 </div>
                             </div>
 
-                            {/* Card Content */}
-                            <div className="project-info">
-                                <span className="project-category" style={{ color: project.color }}>{project.category}</span>
-                                <h3>{project.title}</h3>
-                                <p>{project.shortDesc}</p>
+                            {/* Info */}
+                            <div className="p-8 flex-grow">
+                                <span className="text-xs font-bold uppercase tracking-widest mb-2 block" style={{ color: project.color }}>
+                                    {project.category}
+                                </span>
+                                <h3 className="text-2xl font-bold text-white mb-4">{project.title}</h3>
+                                <p className="text-slate-400 mb-6 line-clamp-2">{project.shortDesc}</p>
 
-                                <button className="btn-details" onClick={() => setActiveProject(project)}>
+                                <button
+                                    onClick={() => setActiveProject(project)}
+                                    className="w-full py-4 border border-white/10 text-white rounded-2xl font-bold hover:bg-brand hover:border-brand transition-all duration-300"
+                                >
                                     View Full Details →
                                 </button>
                             </div>
@@ -127,44 +132,61 @@ const Projects = () => {
                 </div>
             </div>
 
-            {/* Modal Overlay */}
+            {/* Project Modal Overlay */}
             {activeProject && (
-                <div className="project-modal-overlay" onClick={() => setActiveProject(null)}>
-                    <div className="project-modal-content" onClick={(e) => e.stopPropagation()}>
-
-                        <button className="close-modal" onClick={() => setActiveProject(null)}>
+                <div
+                    className="fixed inset-0 z- flex items-center justify-center p-6 bg-black/90 backdrop-blur-md animate-in fade-in duration-300"
+                    onClick={() => setActiveProject(null)}
+                >
+                    <div
+                        className="bg-[#0a0a0a] border border-white/10 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[40px] p-8 md:p-12 relative shadow-[0_0_50px_rgba(52,96,101,0.2)]"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            className="absolute top-8 right-8 text-slate-400 hover:text-white text-3xl transition-colors"
+                            onClick={() => setActiveProject(null)}
+                        >
                             <FaTimes />
                         </button>
 
-                        <span className="modal-category" style={{ color: activeProject.color }}>
+                        <span className="text-sm font-bold uppercase tracking-widest mb-4 block" style={{ color: activeProject.color }}>
                             {activeProject.category}
                         </span>
-                        <h2>{activeProject.title}</h2>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">{activeProject.title}</h2>
 
-                        <div className="modal-tech">
-                            {activeProject.tech.map((item, index) => (
-                                <span key={index} className="tech-badge">{item}</span>
+                        {/* Tech Badges */}
+                        <div className="flex flex-wrap gap-3 mb-10">
+                            {activeProject.tech.map((tech, i) => (
+                                <span key={i} className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-slate-300 text-sm font-medium">
+                                    {tech}
+                                </span>
                             ))}
                         </div>
 
-                        <div className="modal-details">
-                            <h3>Key Features & Architecture:</h3>
-                            <ul>
-                                {activeProject.fullDetails.map((detail, index) => (
-                                    <li key={index}>{detail}</li>
+                        {/* Details */}
+                        <div className="space-y-6 mb-12">
+                            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                                <div className="w-2 h-8 bg-brand rounded-full"></div>
+                                Key Features & Architecture
+                            </h3>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {activeProject.fullDetails.map((detail, i) => (
+                                    <li key={i} className="flex gap-4 text-slate-400 leading-relaxed">
+                                        <span className="text-brand font-bold">▹</span> {detail}
+                                    </li>
                                 ))}
                             </ul>
                         </div>
 
-                        <div className="modal-links">
-                            <a href={activeProject.github} target="_blank" rel="noreferrer" className="modal-btn">
+                        {/* Links */}
+                        <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/5">
+                            <a href={activeProject.github} className="flex-1 flex items-center justify-center gap-3 py-4 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl font-bold transition-all">
                                 <FaGithub /> Source Code
                             </a>
-                            <a href={activeProject.live} target="_blank" rel="noreferrer" className="modal-btn outline">
+                            <a href={activeProject.live} className="flex-1 flex items-center justify-center gap-3 py-4 bg-brand text-white rounded-2xl font-bold transition-all hover:bg-teal-900 shadow-lg shadow-brand/20">
                                 <FaExternalLinkAlt /> Live Demo
                             </a>
                         </div>
-
                     </div>
                 </div>
             )}

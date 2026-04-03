@@ -1,5 +1,4 @@
 import React from 'react';
-import './Footer.css';
 import { FaLinkedin, FaGithub, FaEnvelope, FaArrowUp } from 'react-icons/fa';
 
 const Footer = () => {
@@ -8,35 +7,61 @@ const Footer = () => {
     };
 
     return (
-        <footer className="portfolio-footer">
-            <div className="footer-content">
-                <div className="footer-brand">
-                    <h3>SARITA</h3>
-                    <p>Full Stack MERN Developer based in Bangalore.</p>
+        <footer className="relative bg-black text-white pt-20 pb-10 px-6 border-t border-white/5">
+            <div className="max-w-7xl mx-auto">
+
+                {/* Main Footer Content */}
+                <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-16">
+
+                    {/* Brand Section */}
+                    <div className="text-center md:text-left">
+                        <h3 className="text-3xl font-protest text-brand mb-2 tracking-wider">SARITA</h3>
+                        <p className="text-slate-400 text-lg">Full Stack MERN Developer based in Bangalore.</p>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="flex gap-8 text-slate-300 font-medium">
+                        <a href="#about-section" className="hover:text-brand transition-colors duration-300">About</a>
+                        <a href="#projects-section" className="hover:text-brand transition-colors duration-300">Projects</a>
+                        <a href="#skills-section" className="hover:text-brand transition-colors duration-300">Skills</a>
+                        <a href="#contact-section" className="hover:text-brand transition-colors duration-300">Contact</a>
+                    </div>
+
+                    {/* Social Icons */}
+                    <div className="flex gap-5">
+                        <a href="https://linkedin.com" target="_blank" rel="noreferrer"
+                            className="text-2xl text-slate-400 hover:text-brand hover:-translate-y-1 transition-all duration-300">
+                            <FaLinkedin />
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noreferrer"
+                            className="text-2xl text-slate-400 hover:text-brand hover:-translate-y-1 transition-all duration-300">
+                            <FaGithub />
+                        </a>
+                        <a href="mailto:sarita595k@gmail.com"
+                            className="text-2xl text-slate-400 hover:text-brand hover:-translate-y-1 transition-all duration-300">
+                            <FaEnvelope />
+                        </a>
+                    </div>
                 </div>
 
-                <div className="footer-links">
-                    <a href="#about-section">About</a>
-                    <a href="#projects-section">Projects</a>
-                    <a href="#skills-section">Skills</a>
-                    <a href="#contact-section">Contact</a>
+                {/* Bottom Bar */}
+                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-500 text-sm">
+                    <p>&copy; {new Date().getFullYear()} Sarita. All rights reserved.</p>
+
+                    {/* Back to Top Button */}
+                    <button
+                        onClick={scrollToTop}
+                        className="group flex items-center gap-3 bg-white/5 hover:bg-brand hover:text-white px-5 py-3 rounded-full transition-all duration-500 border border-white/10 hover:border-brand"
+                    >
+                        <span className="font-bold uppercase tracking-widest text-xs">Back to Top</span>
+                        <div className="w-8 h-8 bg-brand/20 group-hover:bg-white/20 rounded-full flex justify-center items-center text-brand group-hover:text-white transition-colors">
+                            <FaArrowUp />
+                        </div>
+                    </button>
                 </div>
 
-                <div className="footer-socials">
-                    <a href="https://linkedin.com" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-                    <a href="https://github.com" target="_blank" rel="noreferrer"><FaGithub /></a>
-                    <a href="mailto:sarita595k@gmail.com"><FaEnvelope /></a>
-                </div>
             </div>
-
-            <div className="footer-bottom">
-                <p> &copy; {new Date().getFullYear()} Sarita. All rights reserved.</p>
-                <button className="back-to-top" onClick={scrollToTop}>
-                    <FaArrowUp />
-                </button>
-            </div>
-
-        </footer >
+        </footer>
     );
 };
 
