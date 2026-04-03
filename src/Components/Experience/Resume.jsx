@@ -2,13 +2,17 @@ import React from 'react';
 
 const Resume = () => {
     return (
-        <section id="resume-section" className="relative py-16 bg-black px-6 overflow-hidden">
+        <section
+            id="resume-section"
+            // bg-[var(--bg-main)] ensures it follows your theme variables
+            className="relative py-24 bg-[var(--bg-main)] px-6 overflow-hidden transition-colors duration-500"
+        >
             <div className="max-w-6xl mx-auto">
 
                 {/* Header */}
                 <div className="text-center mb-16">
                     <span className="text-brand uppercase tracking-[3px] font-bold text-sm">History</span>
-                    <h2 className="text-5xl md:text-6xl font-protest text-white mt-4">
+                    <h2 className="text-5xl md:text-6xl font-protest text-[var(--text-main)] mt-4 transition-colors duration-500">
                         My <span className="text-brand">Resume</span>
                     </h2>
                 </div>
@@ -17,9 +21,12 @@ const Resume = () => {
 
                     {/* Column 1: Education */}
                     <div className="space-y-10">
-                        <h3 className="text-3xl font-bold text-white pl-5 border-l-4 border-brand">Education</h3>
+                        <h3 className="text-3xl font-bold text-[var(--text-main)] pl-5 border-l-4 border-brand transition-colors duration-500">
+                            Education
+                        </h3>
 
-                        <div className="relative border-l border-white/10 ml-4 pl-10 space-y-12">
+                        {/* Timeline Spine: border-brand/20 for light, border-white/10 for dark */}
+                        <div className="relative border-l border-brand/20 dark:border-white/10 ml-4 pl-10 space-y-12">
                             <ResumeItem
                                 date="2017 - 2020"
                                 title="Master of Computer Applications (MCA)"
@@ -37,9 +44,11 @@ const Resume = () => {
 
                     {/* Column 2: Experience */}
                     <div className="space-y-10">
-                        <h3 className="text-3xl font-bold text-white pl-5 border-l-4 border-brand">Experience</h3>
+                        <h3 className="text-3xl font-bold text-[var(--text-main)] pl-5 border-l-4 border-brand transition-colors duration-500">
+                            Experience
+                        </h3>
 
-                        <div className="relative border-l border-white/10 ml-4 pl-10 space-y-12">
+                        <div className="relative border-l border-brand/20 dark:border-white/10 ml-4 pl-10 space-y-12">
                             <ResumeItem
                                 date="July 2023 - Aug 2023"
                                 title="Frontend Developer Intern"
@@ -63,24 +72,24 @@ const Resume = () => {
 
 // Sub-component for individual Timeline Items
 const ResumeItem = ({ date, title, institution, description }) => (
-    <div className="relative bg-white/5 backdrop-blur-xl p-8 rounded-[24px] border border-white/5 hover:border-brand/50 transition-all duration-300 group shadow-xl">
+    <div className="relative bg-[var(--card-bg)] backdrop-blur-xl p-8 rounded-[24px] border border-[var(--border-subtle)] hover:border-brand/50 transition-all duration-300 group shadow-xl">
 
-        {/* The Timeline Dot */}
-        <div className="absolute -left-[51px] top-10 w-5 h-5 bg-black border-4 border-brand rounded-full z-10 group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(52,96,101,0.5)]"></div>
+        {/* The Timeline Dot: bg adapts to follow the main background color */}
+        <div className="absolute -left-[51px] top-10 w-5 h-5 bg-[var(--bg-main)] border-4 border-brand rounded-full z-10 group-hover:scale-125 transition-all duration-300 shadow-[0_0_10px_rgba(52,96,101,0.5)]"></div>
 
         <span className="text-brand font-bold text-lg mb-3 block uppercase tracking-wide">
             {date}
         </span>
 
-        <h4 className="text-2xl font-bold text-white mb-2 leading-tight">
+        <h4 className="text-2xl font-bold text-[var(--text-main)] mb-2 leading-tight transition-colors duration-500">
             {title}
         </h4>
 
-        <span className="text-slate-400 italic text-base block mb-4">
+        <span className="text-[#2d4f52] dark:text-slate-400 italic text-base block mb-4 transition-colors duration-500">
             {institution}
         </span>
 
-        <p className="text-slate-400 text-lg leading-relaxed">
+        <p className="text-[#2d4f52] dark:text-slate-400 text-lg leading-relaxed transition-colors duration-500">
             {description}
         </p>
     </div>

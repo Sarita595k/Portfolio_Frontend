@@ -9,14 +9,12 @@ import Footer from '../Components/Footer/footer'
 import Contact from '../Components/Contact/Contact'
 import Resume from '../Components/Experience/Resume'
 import Hero from '../Components/Header/Hero'
+import Navbar from '../Components/Navbar/Navbar'
 const LandingPage = () => {
-    const [theme, setTheme] = useState("light");
 
-    const toggleTheme = () => {
-        setTheme((prev) => (prev === "light" ? "dark" : "light"));
-    };
     return (
-        <div className="app-wrapper" data-theme={theme}>
+        <div>
+            {/* <Navbar /> */}
             <Hero />
             <About />
             <Skills />

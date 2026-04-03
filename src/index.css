@@ -1,31 +1,35 @@
 @import "tailwindcss";
 
-@layer base {
+/* 1. CUSTOM VARIANTS (Must be outside @theme) */
+@import "tailwindcss";
 
-    *,
-    ::after,
-    ::before {
-        box-sizing: border-box;
-    }
+@custom-variant dark (&:where(.dark, .dark *));
 
-    html,
-    body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        /* Moving overflow-x here prevents layout bugs */
-        overflow-x: hidden;
-        background-color: black;
-        color: white;
-    }
+:root {
+    /* Light Mode: Teal Palette */
+    --bg-main: #e0f2f1;
+    /* Very soft Teal background */
+    --text-main: #004d40;
+    /* Deep Teal text for readability */
+    --card-bg: rgba(52, 96, 101, 0.1);
+    --border-subtle: rgba(52, 96, 101, 0.2);
 }
 
+.dark {
+    /* Dark Mode: Black Palette */
+    --bg-main: #000000;
+    --text-main: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+/* 3. TAILWIND THEME CONFIG */
 @theme {
     --color-brand: #346065;
     --font-protest: "Protest Revolution", sans-serif;
     --font-kaushan: "Kaushan Script", cursive;
 
-    /* This tells Tailwind to create the .animate-moveBg class */
+    /* Move Keyframes here */
     --keyframes-move-bg: {
         0% {
             transform: translate(0, 0);
@@ -40,6 +44,29 @@
     --animation-move-bg: move-bg 30s linear infinite;
 }
 
+/* 4. BASE STYLES */
+@layer base {
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        transition: background-color 0.5s ease, color 0.5s ease;
+    }
+}
+
+
+/* 5. GLOBAL KEYFRAMES */
 @keyframes spin {
     100% {
         transform: rotate(360deg);

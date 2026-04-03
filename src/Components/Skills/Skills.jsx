@@ -31,7 +31,8 @@ const Skills = () => {
             title: "Backend & DB",
             skills: [
                 { name: "Node.js", icon: <FaNodeJs />, color: "#68A063" },
-                { name: "Express.js", icon: <SiExpress />, color: "#ffffff" },
+                // Express icon is dark in light mode, white in dark mode
+                { name: "Express.js", icon: <SiExpress />, color: "currentColor", customClass: "text-slate-900 dark:text-white" },
                 { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
                 { name: "Firebase", icon: <SiFirebase />, color: "#FFCA28" }
             ]
@@ -51,17 +52,20 @@ const Skills = () => {
         <section
             id="skills-section"
             ref={sectionRef}
-            className="relative w-full min-h-screen bg-black flex justify-center py-16 px-6 overflow-hidden z-10"
+            // Uses dynamic bg-main variable and transitions smoothly
+            className="relative w-full min-h-screen bg-[var(--bg-main)] flex justify-center py-24 px-6 overflow-hidden z-10 transition-colors duration-500"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 91%)" }}
         >
             <div className={`max-w-7xl w-full transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
 
-                {/* Header */}
+                {/* Header - Text color follows the theme variable */}
                 <div className="text-center mb-20">
-                    <h2 className="text-5xl md:text-6xl font-protest text-white mb-4">
+                    <h2 className="text-5xl md:text-6xl font-protest text-[var(--text-main)] mb-4 transition-colors duration-500">
                         Technical <span className="text-brand">Toolkit</span>
                     </h2>
-                    <p className="text-slate-400 text-lg md:text-xl font-medium">The technologies I use to bring ideas to life.</p>
+                    <p className="text-[#2d4f52] dark:text-slate-400 text-lg md:text-xl font-medium transition-colors duration-500">
+                        The technologies I use to bring ideas to life.
+                    </p>
                 </div>
 
                 {/* Skills Grid */}
@@ -69,9 +73,10 @@ const Skills = () => {
                     {skillCategories.map((cat, index) => (
                         <div
                             key={index}
-                            className="bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-[32px] shadow-2xl hover:border-brand/50 transition-all duration-500 group"
+                            // Uses variable card-bg and border-subtle
+                            className="bg-[var(--card-bg)] backdrop-blur-xl border border-[var(--border-subtle)] p-10 rounded-[32px] shadow-xl dark:shadow-2xl hover:border-brand/50 transition-all duration-500 group"
                         >
-                            <h3 className="text-brand text-2xl font-bold mb-8 text-center border-b border-white/10 pb-4 uppercase tracking-widest group-hover:text-white transition-colors">
+                            <h3 className="text-brand text-2xl font-bold mb-8 text-center border-b border-[var(--border-subtle)] pb-4 uppercase tracking-widest group-hover:text-[var(--text-main)] transition-colors">
                                 {cat.title}
                             </h3>
 
@@ -79,12 +84,12 @@ const Skills = () => {
                                 {cat.skills.map((skill, i) => (
                                     <div key={i} className="flex flex-col items-center gap-4 group/item cursor-default">
                                         <div
-                                            className="text-5xl transition-transform duration-300 group-hover/item:scale-125 drop-shadow-md"
-                                            style={{ color: skill.color }}
+                                            className={`text-5xl transition-transform duration-300 group-hover/item:scale-125 drop-shadow-md ${skill.customClass || ""}`}
+                                            style={!skill.customClass ? { color: skill.color } : {}}
                                         >
                                             {skill.icon}
                                         </div>
-                                        <span className="text-slate-300 text-sm font-semibold tracking-wide whitespace-nowrap group-hover/item:text-brand transition-colors">
+                                        <span className="text-[#2d4f52] dark:text-slate-300 text-sm font-semibold tracking-wide whitespace-nowrap group-hover/item:text-brand transition-colors">
                                             {skill.name}
                                         </span>
                                     </div>
