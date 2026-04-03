@@ -10,7 +10,7 @@ const SubContainer = () => {
             </div>
             {/* Lower Cloud */}
             <div className="absolute top-[25vh] w-full animate-[bounce_12s_ease-in-out_infinite]">
-                <img src={cloud2} alt="cloud" className="w-80 md:w-[500px] opacity-20 ml-[60%]" />
+                <img src={cloud2} alt="cloud" className="w-80 md:w-125 opacity-20 ml-[60%]" />
             </div>
         </div>
     );
