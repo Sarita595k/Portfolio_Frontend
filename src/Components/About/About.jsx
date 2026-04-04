@@ -106,7 +106,7 @@ const About = () => {
                     </div>
 
                     {/* Tech Stack Card */}
-                    <div className="md:col-span-3 bg-[var(--card-bg)] backdrop-blur-xl border border-[var(--border-subtle)] rounded-[32px] p-12 hover:border-brand/50 transition-all duration-500 shadow-xl">
+                    <div className="md:col-span-3 bg-(--card-bg) backdrop-blur-xl border border-[var(--border-subtle)] rounded-[32px] p-12 hover:border-brand/50 transition-all duration-500 shadow-xl">
                         <h3 className="text-brand text-2xl font-bold mb-12 text-center uppercase tracking-widest">
                             Core Technologies
                         </h3>
