@@ -2,26 +2,48 @@ import React, { useState } from 'react';
 import { FaPaperPlane, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Contact = () => {
-    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+    // 1. Unified state for form data
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    // 2. Loading state to handle button disabling
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsSubmitting(true); // Disable button and show loading
+
         try {
-            const response = await fetch('http://localhost:5000/api/contact', {
+            // Adjust the URL to match your backend port (3000 or 5000)
+            const response = await fetch('http://localhost:3000/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
+
+            const data = await response.json();
+
             if (response.ok) {
-                alert("Message received!");
+                alert("Message received! I will get back to you soon.");
+                // Reset form on success
                 setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                alert(data.message || "Something went wrong. Please try again.");
             }
         } catch (error) {
-            console.error("Database connection error:", error);
+            console.error("Connection error:", error);
+            alert("Could not connect to the server. Please check if the backend is running.");
+        } finally {
+            setIsSubmitting(false); // Re-enable button
         }
     };
 
@@ -30,7 +52,6 @@ const Contact = () => {
             id="contact-section"
             className="relative w-full min-h-screen flex justify-center items-center overflow-hidden py-20 px-6 bg-[var(--bg-main)] transition-colors duration-500"
         >
-
             {/* --- Video Background Layer --- */}
             <div className="absolute inset-0 z-0 w-full h-full">
                 <video
@@ -42,13 +63,11 @@ const Contact = () => {
                 >
                     <source src="https://visiblo-theme.tavonline.co/version-4/wp-content/uploads/sites/5/2026/03/world.mp4" type="video/mp4" />
                 </video>
-                {/* Dynamic Tint Overlay: Light Teal in light mode, Black in dark mode */}
                 <div className="absolute inset-0 bg-teal-100/60 dark:bg-black/40 z-10 transition-colors duration-500"></div>
             </div>
 
             {/* --- Content Card --- */}
             <div className="relative z-20 max-w-6xl w-full bg-[var(--card-bg)] backdrop-blur-xl p-8 md:p-16 rounded-[40px] border border-[var(--border-subtle)] shadow-xl dark:shadow-2xl transition-all duration-500">
-
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
                     {/* Left Side: Info */}
@@ -119,11 +138,21 @@ const Contact = () => {
                             className="bg-brand/5 dark:bg-white/5 border border-brand/10 dark:border-white/10 p-5 rounded-2xl text-[var(--text-main)] placeholder:text-[#2d4f52]/60 dark:placeholder:text-slate-500 outline-none focus:border-brand focus:bg-brand/10 dark:focus:bg-white/10 transition-all resize-none"
                         ></textarea>
 
+                        {/* --- Disabled Logic Applied Here --- */}
                         <button
                             type="submit"
-                            className="bg-brand hover:opacity-90 text-white py-5 rounded-2xl font-bold text-lg flex justify-center items-center gap-3 transition-all transform hover:-translate-y-1 shadow-lg shadow-brand/20 cursor-pointer"
+                            disabled={isSubmitting}
+                            className={`bg-brand text-white py-5 rounded-2xl font-bold text-lg flex justify-center items-center gap-3 transition-all transform shadow-lg shadow-brand/20 
+                                ${isSubmitting
+                                    ? 'opacity-70 cursor-not-allowed scale-100'
+                                    : 'hover:opacity-90 hover:-translate-y-1 cursor-pointer active:scale-95'
+                                }`}
                         >
-                            Send Message <FaPaperPlane />
+                            {isSubmitting ? (
+                                <>Sending... <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div></>
+                            ) : (
+                                <>Send Message <FaPaperPlane /></>
+                            )}
                         </button>
                     </form>
 
