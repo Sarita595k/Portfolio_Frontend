@@ -9,10 +9,23 @@ const ProjectDetails = () => {
 
     useEffect(() => {
         const fetchAiData = async () => {
+            // 1. Check local storage first
+            const cacheKey = `project_ai_${id}`;
+            const cachedData = localStorage.getItem(cacheKey);
+
+            if (cachedData) {
+                console.log("Loading from Cache...");
+                setAiContent(JSON.parse(cachedData));
+                setLoading(false);
+                return; // Stop here, don't call the API
+            }
+
+            // 2. If no cache, find project details from your local list
             const project = projectList.find(p => p.id === parseInt(id));
             if (!project) return;
 
             try {
+                console.log("Fetching fresh data from AI...");
                 const response = await fetch('http://localhost:5000/api/project-analysis', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -21,7 +34,12 @@ const ProjectDetails = () => {
                         techStack: project.tech.join(", ")
                     }),
                 });
+
                 const data = await response.json();
+
+                // 3. Store the result in localStorage for future visits
+                localStorage.setItem(cacheKey, JSON.stringify(data));
+
                 setAiContent(data);
             } catch (error) {
                 console.error("AI Fetch Error:", error);
@@ -29,6 +47,7 @@ const ProjectDetails = () => {
                 setLoading(false);
             }
         };
+
         fetchAiData();
     }, [id]);
 
