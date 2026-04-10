@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaGithub, FaExternalLinkAlt, FaTimes, FaLaptopCode, FaMobileAlt, FaTabletAlt } from "react-icons/fa";
-
+import travelCart from "../../assets/project/travelCart.png"
 const Projects = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [activeProject, setActiveProject] = useState(null);
@@ -29,9 +29,9 @@ const Projects = () => {
     const projectList = [
         {
             id: 1,
-            title: "Job Portal Platform",
-            category: "Full-Stack (MERN)",
-            shortDesc: "A robust job portal connecting employers and job seekers with custom backend routing.",
+            title: "TravelCart-AI powered itinerary planner",
+            category: "AI Integration",
+            shortDesc: "A robust itinerary portal connecting traveller to there travel destinations with the help of AI.",
             fullDetails: [
                 "Architected a custom RESTful API using Node.js and Express.",
                 "Implemented secure user authentication and role-based access (Employer vs. Applicant).",
@@ -40,7 +40,7 @@ const Projects = () => {
             ],
             tech: ["Node.js", "Express", "EJS", "MongoDB"],
             github: "#",
-            live: "#",
+            live: "https://travelcartavsar.netlify.app/",
             color: "#3b82f6"
         },
         {
@@ -56,13 +56,13 @@ const Projects = () => {
             ],
             tech: ["React", "CSS3", "React Router"],
             github: "#",
-            live: "#",
+            live: "https://organic-nutritionist.netlify.app/",
             color: "#10b981"
         },
         {
             id: 3,
-            title: "Smart Developer Hub",
-            category: "AI Integration",
+            title: "Avsar Ecommerce",
+            category: "Full-Stack (MERN)",
             shortDesc: "An experimental platform integrating modern AI APIs directly into a React frontend.",
             fullDetails: [
                 "Successfully integrated third-party AI APIs (like Gemini/OpenAI) via Express.",
@@ -97,18 +97,34 @@ const Projects = () => {
                             className="bg-[var(--card-bg)] backdrop-blur-xl border border-[var(--border-subtle)] rounded-[32px] overflow-hidden flex flex-col hover:border-brand/50 transition-all duration-500 group shadow-xl dark:shadow-2xl"
                         >
                             {/* Device Mockup Wrapper */}
-                            <div className="h-64 bg-brand/5 dark:bg-white/5 relative flex justify-center items-end pb-8 border-b border-[var(--border-subtle)] overflow-hidden transition-colors">
-                                {/* Desktop */}
-                                <div className="w-48 h-32 bg-slate-200 dark:bg-[#1a1a1a] border-2 border-slate-400 dark:border-slate-700 rounded-t-lg z-10 flex items-center justify-center text-brand text-3xl group-hover:scale-110 transition-all duration-500">
-                                    <FaLaptopCode />
-                                </div>
-                                {/* Tablet */}
-                                <div className="absolute left-10 bottom-10 w-20 h-28 bg-slate-300 dark:bg-[#222] border-2 border-slate-400 dark:border-slate-700 rounded-lg z-20 flex items-center justify-center text-brand text-2xl shadow-xl group-hover:-translate-x-2 transition-all duration-500">
-                                    <FaTabletAlt />
-                                </div>
-                                {/* Mobile */}
-                                <div className="absolute right-12 bottom-8 w-12 h-24 bg-slate-400 dark:bg-[#2a2a2a] border-2 border-slate-400 dark:border-slate-700 rounded-xl z-30 flex items-center justify-center text-brand text-xl shadow-2xl group-hover:translate-x-2 transition-all duration-500">
-                                    <FaMobileAlt />
+                            <div className="h-72 bg-brand/5 dark:bg-white/5 relative flex justify-center items-center p-4 border-b border-[var(--border-subtle)] overflow-hidden transition-colors group">
+
+                                {/* Screen Frame */}
+                                <div className="relative w-full h-full max-w-[280px] bg-slate-800 rounded-t-xl border-[6px] border-slate-800 dark:border-slate-700 shadow-2xl overflow-hidden">
+
+                                    {/* Top Bar (Browser UI look) */}
+                                    <div className="h-4 bg-slate-700 w-full flex items-center px-2 gap-1">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-red-500"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                                    </div>
+
+                                    {/* The Iframe Container */}
+                                    <div className="relative w-full h-full overflow-hidden bg-white">
+                                        <iframe
+                                            src={project.live}
+                                            title={project.title}
+                                            className="w-[1280px] h-[2000px] origin-top-left scale-[0.22] pointer-events-none transition-transform duration-[5000s] ease-linear group-hover:translate-y-[-1000px]"
+                                            loading="lazy"
+                                        />
+
+                                        {/* Fallback Overlay if no live link or while loading */}
+                                        {/* {project.live === "https://travelcartavsar.netlify.app/" && (
+                                            <div className="absolute inset-0 bg-slate-100 flex items-center justify-center">
+                                                <img src={project.img} alt="Preview" className="w-full h-full object-cover" />
+                                            </div>
+                                        )} */}
+                                    </div>
                                 </div>
                             </div>
 
