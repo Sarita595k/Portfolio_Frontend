@@ -1,0 +1,30 @@
+/* Responsive Device Preview Styling */
+.device-wrapper {
+    perspective: 1000px;
+}
+
+/* Specific Device Bordering to mimic hardware */
+.laptop-layout-custom iframe {
+    background: white;
+    box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.25);
+}
+
+.tablet-layout-custom iframe,
+.mobile-layout-custom iframe {
+    background: white;
+}
+
+/* Hover effects for depth */
+.device-wrapper div:hover {
+    transform: translateY(-10px) scale(1.02);
+    transition: all 0.5s ease;
+    z-index: 50;
+    /* Bring hovered device to front */
+}
+
+/* Light/Dark mode iframe background fixes */
+@media (prefers-color-scheme: dark) {
+    iframe {
+        background-color: #121212;
+    }
+}

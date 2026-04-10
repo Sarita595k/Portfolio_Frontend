@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { projectList } from "./Projects";
+import "./Project.css"
+import { FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa";
 
 const ProjectDetails = () => {
     const { id } = useParams();
     const [aiContent, setAiContent] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // Find the static project data (links, images, etc.)
+    const project = projectList.find(p => p.id === parseInt(id));
+
     useEffect(() => {
         const fetchAiData = async () => {
-            // 1. Check local storage first
             const cacheKey = `project_ai_${id}`;
             const cachedData = localStorage.getItem(cacheKey);
 
             if (cachedData) {
-                console.log("Loading from Cache...");
                 setAiContent(JSON.parse(cachedData));
                 setLoading(false);
-                return; // Stop here, don't call the API
+                return;
             }
 
-            // 2. If no cache, find project details from your local list
-            const project = projectList.find(p => p.id === parseInt(id));
             if (!project) return;
 
             try {
-                console.log("Fetching fresh data from AI...");
                 const response = await fetch('http://localhost:5000/api/project-analysis', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -34,12 +34,8 @@ const ProjectDetails = () => {
                         techStack: project.tech.join(", ")
                     }),
                 });
-
                 const data = await response.json();
-
-                // 3. Store the result in localStorage for future visits
                 localStorage.setItem(cacheKey, JSON.stringify(data));
-
                 setAiContent(data);
             } catch (error) {
                 console.error("AI Fetch Error:", error);
@@ -47,74 +43,118 @@ const ProjectDetails = () => {
                 setLoading(false);
             }
         };
-
         fetchAiData();
-    }, [id]);
+    }, [id, project]);
 
     return (
-        <div className="w-full min-h-screen bg-[var(--bg-main)]">
-            {/* Adding PT-32 (Padding Top) ensures the content 
-               starts AFTER your fixed navbar 
-            */}
-            <div className="max-w-4xl mx-auto pt-32 pb-20 px-6 text-white">
+        <div className="w-full min-h-screen bg-[var(--bg-main)] transition-colors duration-300">
+            <div className="max-w-7xl mx-auto pt-32 pb-20 px-6">
 
                 {loading ? (
                     <div className="flex flex-col items-center justify-center py-20">
                         <div className="w-12 h-12 border-4 border-brand border-t-transparent rounded-full animate-spin mb-4"></div>
-                        <p className="text-xl font-medium animate-pulse text-slate-400">
-                            AI is analyzing <span className="text-brand font-bold">{id}</span>...
+                        <p className="text-xl font-medium animate-pulse text-slate-500 dark:text-slate-400">
+                            AI is analyzing the project...
                         </p>
                     </div>
                 ) : (
                     <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                        {/* Header */}
-                        <h1 className="text-4xl md:text-6xl font-bold mb-10 text-brand">
-                            {aiContent?.projectName}
-                        </h1>
 
-                        {/* Vision Section */}
-                        <section className="mb-16">
-                            <h2 className="text-xl font-bold text-brand uppercase tracking-widest mb-4">The Vision</h2>
-                            <p className="text-slate-300 text-lg leading-relaxed border-l-4 border-brand pl-6">
-                                {aiContent?.whyDesigned}
-                            </p>
-                        </section>
-
-                        {/* Two-Column Layout for Benefits & AI */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                            <section className="bg-slate-900/50 p-8 rounded-[32px] border border-white/5">
-                                <h2 className="text-xl font-bold text-brand mb-4">Core Benefits</h2>
-                                <ul className="space-y-3 text-slate-300">
-                                    {aiContent?.benefits?.map((benefit, i) => (
-                                        <li key={i} className="flex gap-2">
-                                            <span className="text-brand">▹</span> {benefit}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </section>
-
-                            <section className="bg-brand/5 p-8 rounded-[32px] border border-brand/10">
-                                <h2 className="text-xl font-bold text-brand mb-4">AI Integration</h2>
-                                <p className="text-slate-300 leading-relaxed">
-                                    {aiContent?.aiIntegration}
-                                </p>
-                            </section>
+                        {/* Title and Links Section */}
+                        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                            <div>
+                                <h1 className="text-5xl md:text-7xl font-bold text-brand mb-4">
+                                    {aiContent?.projectName}
+                                </h1>
+                                <div className="flex gap-6 items-center">
+                                    <a href={project?.github} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand transition-colors text-lg font-bold">
+                                        <FaGithub /> GitHub
+                                    </a>
+                                    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand transition-colors text-lg font-bold">
+                                        <FaLinkedin /> LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                            <a href={project?.live} target="_blank" rel="noreferrer" className="bg-brand text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-2 hover:scale-105 transition-transform shadow-lg shadow-brand/20">
+                                <FaGlobe /> Live Site
+                            </a>
                         </div>
 
-                        {/* Future Roadmap */}
-                        <section className="bg-white/5 p-10 rounded-[40px] border border-white/10">
-                            <h2 className="text-2xl font-bold text-white mb-8 text-center uppercase tracking-widest">
-                                Future Roadmap
-                            </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                                {aiContent?.futureRoadmap?.map((feature, i) => (
-                                    <div key={i} className="flex flex-col items-center text-center p-4 bg-black/20 rounded-2xl">
-                                        <span className="text-brand text-2xl mb-2">0{i + 1}</span>
-                                        <p className="text-sm text-slate-400 font-medium">{feature}</p>
-                                    </div>
-                                ))}
+                        {/* MULTI-DEVICE PREVIEW SECTION */}
+                        <section className="hidden lg:block relative w-full overflow-hidden py-20 mb-20 bg-slate-100/50 dark:bg-white/5 rounded-[50px] border border-slate-200 dark:border-white/10">
+                            <div className="device-wrapper relative mx-auto" style={{ height: '700px', maxWidth: '1200px' }}>
+
+                                {/* Laptop Layout */}
+                                <div className="laptop-layout-custom absolute left-0 top-0 w-[80%] aspect-video z-10 hidden lg:block">
+                                    <iframe
+                                        src={project?.live}
+                                        title="Laptop Preview"
+                                        className="w-full h-full rounded-xl border-[12px] border-slate-800 shadow-2xl"
+                                    />
+                                </div>
+
+                                {/* Tablet Layout */}
+                                <div className="tablet-layout-custom absolute right-[10%] bottom-0 w-[30%] h-[80%] z-20 hidden md:block">
+                                    <iframe
+                                        src={project?.live}
+                                        title="Tablet Preview"
+                                        className="w-full h-full rounded-[40px] border-[10px] border-slate-900 shadow-2xl"
+                                    />
+                                </div>
+
+                                {/* Mobile Layout */}
+                                <div className="mobile-layout-custom absolute right-0 bottom-[-5%] w-[18%] h-[65%] z-30 shadow-2xl">
+                                    <iframe
+                                        src={project?.live}
+                                        title="Mobile Preview"
+                                        className="w-full h-full rounded-[35px] border-[8px] border-black"
+                                    />
+                                </div>
                             </div>
                         </section>
+
+                        {/* AI Content Section */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                            <div className="lg:col-span-2 space-y-12">
+                                <section>
+                                    <h2 className="text-2xl font-bold text-brand uppercase tracking-widest mb-4">The Vision</h2>
+                                    <p className="text-slate-700 dark:text-slate-300 text-xl leading-relaxed">
+                                        {aiContent?.whyDesigned}
+                                    </p>
+                                </section>
+
+                                <section className="bg-brand/5 p-8 rounded-[32px] border border-brand/10">
+                                    <h2 className="text-xl font-bold text-brand mb-4">AI Integration</h2>
+                                    <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+                                        {aiContent?.aiIntegration}
+                                    </p>
+                                </section>
+                            </div>
+
+                            <aside className="space-y-8">
+                                <section className="bg-white dark:bg-slate-900/50 p-8 rounded-[32px] border border-slate-200 dark:border-white/5 shadow-sm">
+                                    <h2 className="text-xl font-bold text-brand mb-4">Key Benefits</h2>
+                                    <ul className="space-y-4">
+                                        {aiContent?.benefits?.map((b, i) => (
+                                            <li key={i} className="flex gap-3 text-slate-600 dark:text-slate-300 font-medium">
+                                                <span className="text-brand">✔</span> {b}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </section>
+
+                                <section className="bg-slate-50 dark:bg-black/20 p-8 rounded-[32px] border border-slate-200 dark:border-white/5">
+                                    <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Roadmap</h2>
+                                    <ul className="space-y-3">
+                                        {aiContent?.futureRoadmap?.map((f, i) => (
+                                            <li key={i} className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-brand"></div> {f}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </section>
+                            </aside>
+                        </div>
                     </div>
                 )}
             </div>
