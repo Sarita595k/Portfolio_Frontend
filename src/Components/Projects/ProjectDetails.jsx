@@ -93,23 +93,34 @@ const ProjectDetails = () => {
                                     />
                                 </div>
 
-                                {/* Tablet Layout */}
-                                <div className="tablet-layout-custom absolute right-[10%] bottom-0 w-[30%] h-[80%] z-20 hidden md:block">
-                                    <iframe
-                                        src={project?.live}
-                                        title="Tablet Preview"
-                                        className="w-full h-full rounded-[40px] border-[10px] border-slate-900 shadow-2xl"
-                                    />
+                                {/* Tablet - Middle Layer (Pushed to 38% Width) */}
+                                <div className="absolute lg:right-[18%] lg:bottom-[2%] lg:w-[38%] aspect-[3/4] z-20 transition-all duration-500 hover:scale-[1.04] hover:z-50">
+                                    <div className="absolute inset-0 bg-slate-900 rounded-[50px] border-[14px] border-slate-900 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.5)] overflow-hidden">
+                                        <iframe
+                                            src={project?.live}
+                                            title="Tablet Preview"
+                                            className="w-full h-full bg-white"
+                                        />
+                                    </div>
+                                    {/* Center Home Button for detail */}
+                                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-slate-800 rounded-full"></div>
                                 </div>
 
-                                {/* Mobile Layout */}
-                                <div className="mobile-layout-custom absolute right-0 bottom-[-5%] w-[18%] h-[65%] z-30 shadow-2xl">
-                                    <iframe
-                                        src={project?.live}
-                                        title="Mobile Preview"
-                                        className="w-full h-full rounded-[35px] border-[8px] border-black"
-                                    />
+                                {/* Mobile - Front Layer (Pushed to 24% Width) */}
+                                <div className="absolute lg:right-[0%] lg:bottom-[-5%] lg:w-[24%] aspect-[9/19] z-30 transition-all duration-500 hover:scale-[1.06] hover:z-50">
+                                    <div className="absolute inset-0 bg-black rounded-[45px] border-[12px] border-black shadow-[0_45px_90px_-20px_rgba(0,0,0,0.6)] overflow-hidden">
+                                        <iframe
+                                            src={project?.live}
+                                            title="Mobile Preview"
+                                            className="w-full h-full bg-white"
+                                        />
+                                    </div>
+                                    {/* Dynamic Island / Speaker Notch detail */}
+                                    <div className="absolute top-5 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-3xl flex items-center justify-end px-3">
+                                        <div className="w-2 h-2 rounded-full bg-slate-900"></div>
+                                    </div>
                                 </div>
+
                             </div>
                         </section>
 
