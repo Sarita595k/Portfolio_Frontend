@@ -26,7 +26,7 @@ const ProjectDetails = () => {
             if (!project) return;
 
             try {
-                const response = await fetch(`${import.meta.VITE_URL}/api/project-analysis`, {
+                const response = await fetch(`${import.meta.env.VITE_URL}/api/project-analysis`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

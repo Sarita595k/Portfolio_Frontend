@@ -24,7 +24,7 @@ const Contact = () => {
 
         try {
             // Adjust the URL to match your backend port (3000 or 5000)
-            const response = await fetch(`${import.meta.VITE_URL}/api/contact`, {
+            const response = await fetch(`${import.meta.env.VITE_URL}/api/contact`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
