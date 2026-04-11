@@ -1,10 +1,10 @@
 import './App.css'
-import Navbar from './Components/Navbar/Navbar'
+import Navbar from './Components/Navbar/Navbar.jsx'
 import LandingPage from './Page/LandingPage'
 import { Routes, Route } from 'react-router-dom'
-import ProjectDetails from './Components/Projects/ProjectDetails'
-import Contact from './Components/Contact/Contact'
-import Footer from './Components/Footer/Footer'
+import ProjectDetails from './Components/Projects/ProjectDetails.jsx'
+import Contact from './Components/Contact/Contact.jsx'
+import Footer from "./Components/Footer/Footer.jsx"
 
 
 const App = () => {
