@@ -81,7 +81,7 @@ const Contact = () => {
                         </h2>
 
                         <div className="space-y-8">
-                            <div className="flex items-center gap-6 group">
+                            {/* <div className="flex items-center gap-6 group">
                                 <div className="w-14 h-14 bg-brand/10 dark:bg-brand/20 text-brand rounded-2xl flex justify-center items-center text-2xl group-hover:scale-110 transition-transform">
                                     <FaPhoneAlt />
                                 </div>
@@ -89,7 +89,7 @@ const Contact = () => {
                                     <p className="text-[#2d4f52] dark:text-slate-400 text-sm transition-colors">Phone</p>
                                     <strong className="text-[var(--text-main)] text-xl transition-colors">+91 7303473668</strong>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="flex items-center gap-6 group">
                                 <div className="w-14 h-14 bg-brand/10 dark:bg-brand/20 text-brand rounded-2xl flex justify-center items-center text-2xl group-hover:scale-110 transition-transform">
