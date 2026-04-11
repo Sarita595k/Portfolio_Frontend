@@ -10,7 +10,7 @@ import Footer from "./Components/Footer/Footer.jsx"
 const App = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/project/:id" element={<ProjectDetails />} />

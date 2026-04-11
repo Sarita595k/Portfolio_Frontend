@@ -5,13 +5,13 @@ export const projectList = [
         category: "AI Integration",
         shortDesc: "A robust itinerary portal connecting traveller to there travel destinations with the help of AI.",
         fullDetails: [
-            "Architected a custom RESTful API using Node.js and Express.",
-            "Implemented secure user authentication and role-based access (Employer vs. Applicant).",
-            "Designed a dynamic MongoDB schema for tracking job postings and application statuses.",
-            "Built responsive server-side rendered views using EJS."
+            "Successfully integrated third-party AI APIs (like Gemini/OpenAI) via Express.",
+            "Engineered dynamic prompt-handling for smart code analysis.",
+            "Built an interactive chat interface mimicking real-time streaming responses.",
+            "Stored conversation histories in MongoDB for user session continuity."
         ],
-        tech: ["Node.js", "Express", "EJS", "MongoDB"],
-        github: "#",
+        tech: ["MERN Stack", "AI APIs", "Context API"],
+        github: "https://github.com/Sarita595k/Travel_Cart_",
         live: "https://travelcartavsar.netlify.app/",
         color: "#3b82f6"
     },
@@ -22,12 +22,13 @@ export const projectList = [
         shortDesc: "A highly responsive, client-facing website designed for an organic nutritionist business.",
         fullDetails: [
             "Designed a pixel-perfect, mobile-first interface prioritizing UX and accessibility.",
-            "Utilized modern React Hooks (useState, useEffect) for dynamic state management.",
-            "Implemented React Router for seamless single-page application (SPA) navigation.",
-            "Optimized asset loading for fast performance and high Lighthouse scores."
+            `Created a brand-consistent wellness theme using natural colors, rounded UI elements, and soft typography to
+reflect health, purity, and nutrition psychology `,
+            ` Implemented micro-interactions using JavaScript—smooth scroll, active menu highlighting, button hover
+animations—to deliver a polished user experience.`
         ],
-        tech: ["React", "CSS3", "React Router"],
-        github: "#",
+        tech: ["HTML", "CSS3", "JavaScript"],
+        github: "https://github.com/Sarita595k/nutritionist_web",
         live: "https://organic-nutritionist.netlify.app/",
         color: "#10b981"
     },
@@ -35,15 +36,15 @@ export const projectList = [
         id: 3,
         title: "Avsar Ecommerce",
         category: "Full-Stack (MERN)",
-        shortDesc: "An experimental platform integrating modern AI APIs directly into a React frontend.",
+        shortDesc: "An experimental platform integrating modern shooping styles into a React frontend.",
         fullDetails: [
-            "Successfully integrated third-party AI APIs (like Gemini/OpenAI) via Express.",
-            "Engineered dynamic prompt-handling for smart code analysis.",
-            "Built an interactive chat interface mimicking real-time streaming responses.",
-            "Stored conversation histories in MongoDB for user session continuity."
+            "Architected a custom RESTful API using Node.js and Express.",
+            "Implemented secure user authentication and role-based access (Employer vs. Applicant).",
+            "Designed a dynamic MongoDB schema for tracking product postings and application statuses.",
+            "Built responsive server-side rendered views using EJS."
         ],
-        tech: ["MERN Stack", "AI APIs", "Context API"],
-        github: "#",
+        tech: ["Node.js", "Express", "EJS", "MongoDB"],
+        github: "https://github.com/Sarita595k/Avsar_Ecommerce",
         live: "#",
         color: "#8b5cf6"
     }

@@ -22,19 +22,19 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div className="flex gap-8 text-[#2d4f52] dark:text-slate-300 font-medium transition-colors">
-                        <a href="#about-section" className="hover:text-brand transition-colors duration-300">About</a>
+                        {/* <a href="#about-section" className="hover:text-brand transition-colors duration-300">About</a>
                         <a href="#projects-section" className="hover:text-brand transition-colors duration-300">Projects</a>
                         <a href="#skills-section" className="hover:text-brand transition-colors duration-300">Skills</a>
-                        <a href="#contact-section" className="hover:text-brand transition-colors duration-300">Contact</a>
+                        <a href="#contact-section" className="hover:text-brand transition-colors duration-300">Contact</a> */}
                     </div>
 
                     {/* Social Icons */}
                     <div className="flex gap-5">
-                        <a href="https://linkedin.com" target="_blank" rel="noreferrer"
+                        <a href="https://www.linkedin.com/in/sarita595" target="_blank" rel="noreferrer"
                             className="text-2xl text-[#2d4f52] dark:text-slate-400 hover:text-brand hover:-translate-y-1 transition-all duration-300">
                             <FaLinkedin />
                         </a>
-                        <a href="https://github.com" target="_blank" rel="noreferrer"
+                        <a href="https://github.com/Sarita595k" target="_blank" rel="noreferrer"
                             className="text-2xl text-[#2d4f52] dark:text-slate-400 hover:text-brand hover:-translate-y-1 transition-all duration-300">
                             <FaGithub />
                         </a>
