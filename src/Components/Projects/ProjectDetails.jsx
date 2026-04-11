@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { projectList } from "./Projects";
+import { projectList } from "./Project";
 import "./Project.css"
 import { FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa";
 
