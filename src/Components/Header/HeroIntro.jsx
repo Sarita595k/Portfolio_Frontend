@@ -19,10 +19,10 @@ const HeroIntro = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <a href="#projects" className="px-8 py-3 bg-brand text-white rounded-full font-bold text-center transition-all hover:bg-[#1a3133] shadow-lg shadow-brand/20">
+                <a href='#projects-section' className="px-8 py-3 bg-brand text-white rounded-full font-bold text-center transition-all hover:bg-[#1a3133] shadow-lg shadow-brand/20">
                     View Projects
                 </a>
-                <a href="#contact"
+                <a href='#contact-section'
                     className="px-8 py-3 border-2 border-brand text-brand dark:border-white dark:text-white rounded-full font-bold text-center transition-all hover:bg-brand hover:text-white dark:hover:bg-white dark:hover:text-black">
                     Contact Me
                 </a>
