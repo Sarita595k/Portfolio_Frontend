@@ -5,6 +5,7 @@ import Skills from '../Components/Skills/Skills'
 import Resume from '../Components/Experience/Resume'
 import Hero from '../Components/Header/Hero'
 import Navbar from '../Components/Navbar/Navbar'
+import GithubSection from '../Components/About/GithubSection'
 const LandingPage = () => {
 
     return (
@@ -15,6 +16,7 @@ const LandingPage = () => {
             <Skills />
             <Resume />
             <Projects />
+            <GithubSection />
         </div>
     )
 }
