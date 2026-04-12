@@ -31,7 +31,7 @@ const Resume = () => {
                                 date="2017 - 2020"
                                 title="Master of Computer Applications (MCA)"
                                 institution="Government College for Girls"
-                                description="Achieved a strong academic record of 77.00%, building a deep foundation in computer science and software principles."
+                                description="Achieved a strong academic record, building a deep foundation in computer science and software principles."
                             />
                             <ResumeItem
                                 date="2024 - Present"
