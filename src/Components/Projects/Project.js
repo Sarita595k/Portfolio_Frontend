@@ -44,7 +44,7 @@ export const projectList = [
         ],
         tech: ["Node.js", "Express", "React", "MongoDB"],
         github: "https://github.com/Sarita595k/Avsar_Ecommerce",
-        live: "#",
+        live: "https://avsarecommerce.netlify.app/",
         color: "#8b5cf6"
     }, {
         id: 4,
