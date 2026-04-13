@@ -6,6 +6,9 @@ import Resume from '../Components/Experience/Resume'
 import Hero from '../Components/Header/Hero'
 import Navbar from '../Components/Navbar/Navbar'
 import GithubSection from '../Components/About/GithubSection'
+import AboutJourney from '../Components/About/AboutJourney'
+import LiveStatus from '../Components/About/LiveStatus'
+import ArchitectureBlueprint from '../Components/About/ArchitectureBlueprint'
 const LandingPage = () => {
 
     return (
@@ -16,7 +19,10 @@ const LandingPage = () => {
             <Skills />
             <Resume />
             <Projects />
-            <GithubSection />
+            {/* <GithubSection /> */}
+            {/* <AboutJourney /> */}
+            <LiveStatus />
+            {/* <ArchitectureBlueprint /> */}
         </div>
     )
 }

@@ -3,7 +3,7 @@ import { FaReact, FaNodeJs, FaJava, FaGraduationCap, FaUsers, FaClock, FaRocket 
 import { SiExpress, SiMongodb } from "react-icons/si";
 import { FaRobot } from "react-icons/fa6";
 
-const About = () => {
+const AboutJourney = () => {
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
 
@@ -107,17 +107,14 @@ const About = () => {
                         </div>
                     </div>
 
-                    {/* Full Width: Tech Stack */}
-                    <div className="md:col-span-3 bg-[var(--card-bg)] backdrop-blur-xl border border-[var(--border-subtle)] rounded-[40px] p-12 shadow-xl mt-4">
-                        <h3 className="text-brand text-xl font-bold mb-12 text-center uppercase tracking-[0.3em]">
-                            Core Stack
-                        </h3>
-                        <div className="flex flex-wrap justify-center gap-16 md:gap-24">
-                            <TechItem Icon={SiMongodb} name="MongoDB" color="text-green-600" />
-                            <TechItem Icon={SiExpress} name="Express" color="text-slate-900 dark:text-white" />
-                            <TechItem Icon={FaReact} name="React" color="text-cyan-500" />
-                            <TechItem Icon={FaNodeJs} name="Node.js" color="text-green-500" />
-                        </div>
+                    <div className="mt-8 text-center">
+                        <a
+                            href="/Sarita_Resume.pdf"
+                            download
+                            className="inline-flex items-center gap-3 bg-brand text-white px-10 py-5 rounded-2xl font-bold hover:scale-105 transition-transform shadow-lg shadow-brand/30"
+                        >
+                            Download My Full Resume (PDF)
+                        </a>
                     </div>
                 </div>
             </div>
@@ -147,13 +144,6 @@ const FocusItem = ({ Icon, title, sub, color }) => (
     </div>
 );
 
-const TechItem = ({ Icon, name, color }) => (
-    <div className="flex flex-col items-center gap-4 group">
-        <Icon className={`text-6xl ${color} transition-all duration-500 group-hover:scale-125 group-hover:-translate-y-2`} />
-        <span className="text-[10px] font-bold tracking-widest text-slate-500 group-hover:text-brand transition-colors uppercase">
-            {name}
-        </span>
-    </div>
-);
 
-export default About;
+
+export default AboutJourney;
